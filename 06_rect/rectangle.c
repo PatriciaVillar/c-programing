@@ -45,51 +45,65 @@ rectangle intersection(rectangle r1, rectangle r2) {
   i.y=0;
   i.width=0;
   i.height=0;
+  int nointersect=1;
   
   if (r1.x <= r2.x) {
     i.x = r2.x; //
-    if (( r2.x - r1.x ) <= r1.width) {
-      if (r2.width >= ( r1.width - (r2.x - r1.x))){
-	i.width = r1.width - ( r2.x - r1.x );}
+    if ((abs( r2.x - r1.x )) < r1.width) {
+      if (r2.width > ( r1.width -(abs (r2.x - r1.x)))){
+	i.width = r1.width -abs ( r2.x - r1.x );}
       else {i.width = r2.width; }}
-      else { i.width = 0; }}  //no hay interseccion
+      else { i.width = 0;
+	if ((abs( r2.x - r1.x )) > r1.width) {nointersect=0;}
+
+      }}  //si nointersect==0 no hay interseccion en absoluto
   else {//r1.x>r2.x lo mismo de ariba invirtiendo r1 y r2
-    i.x = r1.x;//
-    if (( r1.x - r2.x ) <= r2.width) {
-      if (r1.width >= ( r2.width - (r1.x - r2.x))){
-	i.width = r2.width - ( r1.x - r2.x );}
+    i.x = r1.x;
+    if (abs( r1.x - r2.x ) < r2.width) {
+      if (r1.width >= ( r2.width - abs (r1.x - r2.x))){//saque el igual
+	i.width = r2.width - abs( r1.x - r2.x );}
       else {i.width = r1.width; }}
-    else { i.width = 0; }}
+    else { i.width = 0;
+      if ((abs( r1.x - r2.x )) > r2.width) {nointersect =0;}
+
+    }}
   //hago lo mismo con la altura remplazo x por y, width por height
      if (r1.y <= r2.y) {
        i.y = r2.y; //  
-      if (( r2.y - r1.y ) <= r1.height) {
-      if (r2.height >= ( r1.height - (r2.y - r1.y))){
-	i.height = r1.height - ( r2.y - r1.y );}
+      if (abs( r2.y - r1.y ) <= r1.height) {
+      if (r2.height >= ( r1.height -abs (r2.y - r1.y))){
+	i.height = r1.height -abs ( r2.y - r1.y );}
       else {i.height = r2.height; }}
-      else { i.height = 0; }}  //no hay interseccion
+      else { i.height = 0;
+	if ((abs( r2.y - r1.y )) > r1.height) {nointersect=0;}
+
+      }}  //no hay interseccion
      else {//r1.y>r2.y lo mismo de ariba invirtiendo r1 y r2
     i.y=r1.y;//
-    if (( r1.y - r2.y ) <= r2.height) {
-      if (r1.height >= ( r2.height - (r1.y - r2.y))){
-	i.height = r2.height - ( r1.y - r2.y );}
+    if (abs( r1.y - r2.y ) <= r2.height) {
+      if (r1.height >= ( r2.height -abs (r1.y - r2.y))){
+	i.height = r2.height -abs ( r1.y - r2.y );}
       else {i.height = r1.height; }}
-    else { i.height = 0; }}
- 
+    else { i.height = 0;
+      if ((abs( r1.y - r2.y )) > r2.height) {nointersect=0;}
+
+    }}
+     if(nointersect==0) {i.height=0;i.width=0;}
     return i;
 }
 
 //You should not need to modify any code below this line
 void printRectangle(rectangle r) {
   r = canonicalize(r);
-  if (r.width == 0 || r.height == 0) {
+  if (r.width == 0 && r.height == 0) {
     printf("<empty>\n");
   }
   else {
-    printf("(%d,%d) to (%d,%d)\n", r.x, r.y, 
-	                           r.x + r.width, r.y + r.height);
+    printf("(%d,%d) to (%d,%d)\n", r.x, r.y,
+	      r.x + r.width, r.y + r.height);
   }
 }
+
 
 int main (void) {
   rectangle r1;
