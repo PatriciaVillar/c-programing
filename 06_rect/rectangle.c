@@ -16,21 +16,73 @@ int max (int a, int b) {
 }
 
 //Declare your rectangle structure here!
+typedef struct rect_t {
+  int x;
+  int y;
+  int width;
+  int height;
+} rectangle;
 
 
 rectangle canonicalize(rectangle r) {
-  //WRITE THIS FUNCTION
+  
+  if (r.width < 0) {
+    r.width = 0 - r.width;
+	r.x = r.x - r.width;}
+  if (r.height < 0) {
+      r.height = 0 - r.height;
+	   r.y = r.y - r.height;}
   return r;
 }
 rectangle intersection(rectangle r1, rectangle r2) {
-  //WRITE THIS FUNCTION
-  return r1;
+  rectangle i;
+
+  r1 = canonicalize(r1);
+  
+  r2 = canonicalize(r2);
+  
+  i.x=0;
+  i.y=0;
+  i.width=0;
+  i.height=0;
+  
+  if (r1.x <= r2.x) {
+    i.x = r2.x; //
+    if (( r2.x - r1.x ) <= r1.width) {
+      if (r2.width >= ( r1.width - (r2.x - r1.x))){
+	i.width = r1.width - ( r2.x - r1.x );}
+      else {i.width = r2.width; }}
+      else { i.width = 0; }}  //no hay interseccion
+  else {//r1.x>r2.x lo mismo de ariba invirtiendo r1 y r2
+    i.x = r1.x;//
+    if (( r1.x - r2.x ) <= r2.width) {
+      if (r1.width >= ( r2.width - (r1.x - r2.x))){
+	i.width = r2.width - ( r1.x - r2.x );}
+      else {i.width = r1.width; }}
+    else { i.width = 0; }}
+  //hago lo mismo con la altura remplazo x por y, width por height
+     if (r1.y <= r2.y) {
+       i.y = r2.y; //  
+      if (( r2.y - r1.y ) <= r1.height) {
+      if (r2.height >= ( r1.height - (r2.y - r1.y))){
+	i.height = r1.height - ( r2.y - r1.y );}
+      else {i.height = r2.height; }}
+      else { i.height = 0; }}  //no hay interseccion
+     else {//r1.y>r2.y lo mismo de ariba invirtiendo r1 y r2
+    i.y=r1.y;//
+    if (( r1.y - r2.y ) <= r2.height) {
+      if (r1.height >= ( r2.height - (r1.y - r2.y))){
+	i.height = r2.height - ( r1.y - r2.y );}
+      else {i.height = r1.height; }}
+    else { i.height = 0; }}
+ 
+    return i;
 }
 
 //You should not need to modify any code below this line
 void printRectangle(rectangle r) {
   r = canonicalize(r);
-  if (r.width == 0 && r.height == 0) {
+  if (r.width == 0 || r.height == 0) {
     printf("<empty>\n");
   }
   else {
