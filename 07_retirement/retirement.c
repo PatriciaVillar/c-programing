@@ -1,12 +1,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct _retire_info{
+struct _retire_info{
   int months;
   double contribution;
   double rate_of_return;
-} retire_info;
+};
+typedef struct _retire_info retire_info;
 
+int retirement(retire_info working,retire_info retired){
+  int  startage = 327;
+  double initial = 21345;
+  int age = startage;
+  double savings = initial;
+  for (int i=0;i < working.months ; i++){
+    //print age  27 month  3 you have $21345.00
+    printf("Age %3d month %2d you have $%.2f\n",age/12,age%12,savings);
+    savings=savings*(1+working.rate_of_return)+working.contribution;
+    age++;}
+  for (int i=0;i < retired.months ; i++){
+    //print age  27 month  3 you have $21345.00
+    printf("Age %3d month %2d you have $%.2f\n",age/12,age%12,savings);
+    savings=savings*(1+retired.rate_of_return)+retired.contribution;
+    age++;}
+  return EXIT_SUCCESS;
+}
 int main (){
 	   retire_info working;
 	   working.months=489;
@@ -16,22 +34,7 @@ int main (){
 	   retired.months=384;
 	   retired.contribution=-4000;
 	   retired.rate_of_return=0.0008333333333333334;   
-	   //retire_info working, //info about working
-	   //retire_info retired) //info about being retired
-int  startAge = 327;
-double initial = 21345;
-int Age = startAge;
-double savings = initial;
- for (int i=0;i < working.months ; i++){
-   //print Age  27 month  3 you have $21345.00
-   printf("Age %3d month %2d you have $%.2f\n",Age/12,Age%12,savings);
-   savings=savings*(1+working.rate_of_return)+working.contribution;
-	   Age++;}
- for (int i=0;i < retired.months ; i++){
-   //print Age  27 month  3 you have $21345.00
-   printf("Age %3d month %2d you have $%.2f\n",Age/12,Age%12,savings);
-   savings=savings*(1+retired.rate_of_return)+retired.contribution;
-   Age++;}
- return EXIT_SUCCESS;
+	   retirement(  working,retired);
 }
+
 
