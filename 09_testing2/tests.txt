@@ -1,5 +1,81 @@
-aaaaa bbbbb
+11111 1111
+11111 111111
+1111 1111
+11111 11111 11111
 
-1 1 1 2 2 2
-....  .....
-kkkkk kkkka
+11111 11111
+
+11112 11112
+21111 11112
+
+11123 11123
+11122 11122
+12221 11123
+
+11234 21134
+11223 11234
+
+11111 12345
+11112 12345
+12111 12345
+11123 12345
+21113 12345
+11234 12345
+12234 12345
+12345 12345
+
+11112 12345
+11123 12345
+11234 12345
+11223 12345
+11222 12345
+
+3$E45 34#$$
+
+3$234 12345
+
+111111 11111
+1111 11111
+111 11111
+11 11111
+1 11111
+1 11111111
+ 111111111111111111
+ 11111
+ . . . . . . .
+ abdef hijkl
+
+aabcd hijkl
+bcdaa hijkl
+bcaad hijkl
+abbcd hijkl
+
+aaabk jklmn
+kaaab jklmn
+
+aaaab jklmn
+
+aaaaa jklmn
+
+aaaab jkllm
+
+aabcd aabcd
+aabcd abbcd
+aabcd abccd
+aabbd aacdd
+abbcd aabcd
+abbcd abbcd
+aaabb aaabd
+
+aaabd abcde
+aaabd aabcd
+aaabd aaabc
+bcaaa aaabc
+baaac baaac
+baaab aaab
+
+aaabc hjklf
+baaac hjklf
+bcaaa hjklf
+aaaab cdfkj
+baaaa cdefk
