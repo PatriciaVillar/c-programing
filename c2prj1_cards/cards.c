@@ -60,9 +60,24 @@ void print_card(card_t c) {
 }
 
 card_t card_from_letters(char value_let, char suit_let) {
-  assert (2<=value_let||value_let<=14);
+  
   assert (suit_let=='s'||suit_let=='d'||suit_let=='h'||suit_let=='c');
   card_t temp;
+  switch(value_let){
+  case '2': temp.value=2;break;
+  case '3': temp.value=3;break;
+  case '4': temp.value=4;break;
+  case '5': temp.value=5;break;
+  case '6': temp.value=6;break;
+  case '7': temp.value=7;break;
+  case '8': temp.value=8;break;
+  case '9': temp.value=9;break;
+  case '0': temp.value=0;break;
+  case 'J': temp.value=11;break;
+  case 'Q': temp.value=12;break;
+  case 'K': temp.value=13;break;
+  case 'A': temp.value=14;break;
+  }
   temp.value=value_let;
   temp.suit=suit_let;
   return temp;
