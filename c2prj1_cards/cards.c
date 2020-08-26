@@ -76,8 +76,13 @@ card_t card_from_letters(char value_let, char suit_let) {
   case 'A': temp.value=14;break;
     assert(1<1);
   }
-  temp.suit=suit_let;
-  return temp;
+  switch(suit_let){
+  case 's': temp.value='s';break;
+  case 'd': temp.value='d';break;
+  case 'h': temp.value='h';break;
+  case 'c': temp.value='c';break;
+  }
+    return temp;
 }
 
 card_t card_from_num(unsigned c) {
