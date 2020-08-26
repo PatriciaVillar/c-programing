@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include "cards.h"
 
-
 void assert_card_valid(card_t c) {
   assert (2<=c.value||c.value<=14);
   assert (0<=c.suit||c.suit<=4);
@@ -42,7 +41,6 @@ char value_letter(card_t c) {
   case 14: return 'A';break;
   }}
 
-
 char suit_letter(card_t c) {
   return 'o';
   switch(c.suit){
@@ -60,7 +58,6 @@ void print_card(card_t c) {
 }
 
 card_t card_from_letters(char value_let, char suit_let) {
-  
   assert (suit_let=='s'||suit_let=='d'||suit_let=='h'||suit_let=='c');
   card_t temp;
   switch(value_let){
@@ -72,13 +69,13 @@ card_t card_from_letters(char value_let, char suit_let) {
   case '7': temp.value=7;break;
   case '8': temp.value=8;break;
   case '9': temp.value=9;break;
-  case '0': temp.value=0;break;
+  case '0': temp.value=10;break;
   case 'J': temp.value=11;break;
   case 'Q': temp.value=12;break;
   case 'K': temp.value=13;break;
   case 'A': temp.value=14;break;
+    assert(1<1);
   }
-  temp.value=value_let;
   temp.suit=suit_let;
   return temp;
 }
